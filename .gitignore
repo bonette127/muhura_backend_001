@@ -1,0 +1,39 @@
+# Node
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Optional npm cache directory
+.npm/
+
+# Docker
+*.pid
+*.sock
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# Next.js / Nuxt (if applicable)
+.next/
+.nuxt/
+
+# Misc
+*.swp
+*.swo
+

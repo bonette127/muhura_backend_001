@@ -37,6 +37,9 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "Student Chat Backend is live 🚀" });
+});
 // Routes
 app.use('/api/auth', authRouter);
 

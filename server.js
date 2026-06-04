@@ -10,27 +10,14 @@ const { router: authRouter, authenticate } = require('./auth');
 const app = express();
 const server = http.createServer(app);
 
-const clientUrls = (process.env.CLIENT_URL || 'http://localhost:3000').split(',').map(url => url.trim());
-const deployedFrontend = 'https://muhura-chat-frontend.onrender.com';
-if (!clientUrls.includes(deployedFrontend)) clientUrls.push(deployedFrontend);
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || clientUrls.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS not allowed'));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
 };
 
 const io = new Server(server, {
-  cors: { origin: clientUrls, methods: ['GET', 'POST', 'OPTIONS'] }
+  cors: { origin: '*', methods: ['GET', 'POST'] }
 });
 
 app.use(cors(corsOptions));
